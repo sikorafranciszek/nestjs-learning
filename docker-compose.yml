@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   redis:
     image: redis:7.4.2-alpine
@@ -16,4 +17,18 @@ services:
       POSTGRES_USER: nestapp
       POSTGRES_PASSWORD: nestapp
       POSTGRES_DB: nestapp
+    restart: always
+
+  nestjs-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nestjs-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - ./.env
     restart: always
