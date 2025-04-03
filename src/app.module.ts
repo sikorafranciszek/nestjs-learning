@@ -14,8 +14,8 @@ import { MessageModule } from './message/message.module';
     ScheduleModule.forRoot(),
     BullModule.forRoot({
       connection: {
-        host: 'localhost',
-        port: 6379,
+        host: process.env.REDIS_HOST || 'localhost',
+        port: parseInt(process.env.REDIS_PORT!) || 6379,
       },
     }),
     DatabaseModule,
