@@ -11,11 +11,14 @@ RUN npm install
 # 4. Kopiujemy resztę plików
 COPY . .
 
-# 5. Kompilacja TypeScript
+# 5. Generujemy pliki Prisma
+RUN npx prisma generate
+
+# 6. Kompilacja TypeScript
 RUN npm run build
 
-# 6. Otwieramy port 3000
+# 7. Otwieramy port 3000
 EXPOSE 3000
 
-# 7. Uruchamiamy API
+# 8. Uruchamiamy API
 CMD ["npm", "run", "start:prod"]
