@@ -1,4 +1,11 @@
-import { IsNumber, IsString, IsOptional, Min, Max, IsIn } from 'class-validator';
+import {
+  IsNumber,
+  IsString,
+  IsOptional,
+  Min,
+  Max,
+  IsIn,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class GetMessagesDto {
@@ -17,10 +24,10 @@ export class GetMessagesDto {
 
   @IsOptional()
   @IsString({
-    message: 'Pole sort musi być tekstem'
+    message: 'Pole sort musi być tekstem',
   })
   @IsIn(['asc', 'desc'], {
-    message: 'Pole sort musi być albo asc albo desc'
+    message: 'Pole sort musi być albo asc albo desc',
   })
   sort?: 'asc' | 'desc' = 'desc';
 }

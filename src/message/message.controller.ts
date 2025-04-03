@@ -50,6 +50,8 @@ export class MessageController {
 
   @Post()
   async createMessage(@Body() createMessageDto: CreateMessageDto) {
-    return this.messageService.createMessage({ message: createMessageDto.message });
+    return this.messageService.createMessage({
+      message: createMessageDto.message,
+    });
   }
 }
